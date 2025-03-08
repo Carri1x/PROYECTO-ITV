@@ -37,6 +37,7 @@ public class RegistroNuevoVehiculo extends OpcionTaller implements Validable{
      */
     @Override
     public void ejecutar() {
+        teclado.out("-- REGISTRAR NUEVO VEHÍCULO --\n");
         Vehiculo vehiculo = null;
         String dniCliente = null;
         String matricula;

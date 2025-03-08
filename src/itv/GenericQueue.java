@@ -6,6 +6,7 @@ import vehiculo.Vehiculo;
 import util.GestorIO;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -13,11 +14,11 @@ import java.util.Queue;
  * @author irene, alvaro, alejandro
  */
 public class GenericQueue<T> {
-    private LinkedList<T> cola;
+    private ArrayList<T> cola;
     private int limiteCola;
    
     public GenericQueue(int limiteCola) {
-        this.cola = new LinkedList<T>();
+        this.cola = new ArrayList<T>();
         this.limiteCola = limiteCola;
     }
 
@@ -26,15 +27,23 @@ public class GenericQueue<T> {
      * 
      * @param elemento a insertar.
      */
-    public void insertarElemento(T elemento)throws FullQueueException {
-        if(cola.size() == limiteCola)throw new FullQueueException(elemento, getPrimero());
+    public void enqueue(T elemento)throws FullQueueException {
+        if(cola.size() == limiteCola)throw new FullQueueException(elemento, peek());
         this.cola.add(elemento);
     }
 
-    public T getPrimero(){
+    /**
+     * 
+     * @return devuelve el primer elemento de la cola
+     */
+    public T peek(){
         return this.cola.getFirst();
     }
     
+    /**
+     * 
+     * @return devuelve el último elemento de la cola 
+     */
     public T getUltimo(){
         return this.cola.getLast();
     }
@@ -43,8 +52,8 @@ public class GenericQueue<T> {
      * 
      * @return el elemento extraído o null si la cola está vacía.
      */
-    public T extraer()throws NullPointerException {
-        return this.cola.poll();
+    public T dequeue()throws NullPointerException {
+        return this.cola.removeFirst();
     }
 
     /**
@@ -66,7 +75,7 @@ public class GenericQueue<T> {
      * 
      * @return true si la cola está vacía.
      */
-    public boolean estaVacia() {
+    public boolean isEmpty() {
         return this.cola.isEmpty();
     }
     
@@ -75,10 +84,17 @@ public class GenericQueue<T> {
      * 
      * @return un array de vehículos.
      */
-    public LinkedList<T> getCola() {
+    public List<T> getCola() {
         return this.cola;
     }
     
+    /**
+     * 
+     * @param <E>
+     * @param matricula
+     * @param vehiculos
+     * @return devuelve si la matrícula es válida o no 
+     */
     public static <E extends Vehiculo> boolean matriculaValida(String matricula, GenericQueue<E> vehiculos){
         for (E e : vehiculos.cola) {
             if(e.getMatricula().equalsIgnoreCase(matricula)) return false;
@@ -91,7 +107,7 @@ public class GenericQueue<T> {
      */
     public void mostrarCola() {
         GestorIO teclado = new GestorIO();
-        teclado.out("\n-- Cola --\n");
+        teclado.out("\n-- COLA --\n");
         int i=0;
         for (T elemento : cola) {
             teclado.out("\nPosición " + ++i + ":\n");

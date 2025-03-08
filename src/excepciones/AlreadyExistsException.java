@@ -15,10 +15,18 @@ public class AlreadyExistsException extends Exception{
         this.stringExistente = stringExistente;
     }
     
+    /**
+     * 
+     * @return devuelve el dato que se ha intentado introducir y ya existía 
+     */
     public String getStringExistente(){
         return stringExistente;
     }
 
+    /**
+     * 
+     * @return devuelve el string del mensaje 
+     */
     @Override
     public String toString() {
         return "\n " +super.getMessage();

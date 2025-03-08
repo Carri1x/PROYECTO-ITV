@@ -57,6 +57,10 @@ public class Furgoneta extends TransporteCarga {
     
     
 
+    /**
+     * 
+     * @return devuelve el descuento 
+     */
     @Override
     public double getDescuento() {
         if(cliente.esSuPrimeraVez())return cliente.descuentoPrimeraVez();

@@ -4,6 +4,7 @@
  */
 package opcion;
 
+import cliente.Cliente;
 import excepciones.NotExistsException;
 import itv.Taller;
 import java.util.logging.Level;
@@ -15,29 +16,28 @@ import vehiculo.Vehiculo;
  *
  * @author irene
  */
-public class VehiculoMatriculaNueva extends OpcionTaller {
-    
-    public VehiculoMatriculaNueva(Taller taller) {
-        super("Mostrar vehiculo con la matrícula más nueva", taller);
+public class ClienteDNIAlto extends OpcionTaller{
+
+    public ClienteDNIAlto(Taller taller) {
+        super("Cliente con el DNI más alto", taller);
     }
-    
+
     /**
-     * muestra el vehículo con la matricula más nueva
+     * busca el dni más alto de los que están registrados y lo muestra
      */
     @Override
     public void ejecutar() {
         GestorIO teclado = new GestorIO();
-        teclado.out("-- VEHÍCULO CON LA MATRÍCULA MÁS NUEVA --\n");
-        Vehiculo vehiculo;
+        Cliente cliente;
+        teclado.out("-- CLIENTE CON EL DNI MÁS ALTO --\n");
         try {
-            vehiculo = Taller.encontrarMaximo(taller.getVehiculos());
-            teclado.out(vehiculo.getMatricula()+"\n");
+            cliente = Taller.encontrarMaximo(taller.listaClientes());
+            teclado.out("EL DNI MÁS ALTO ES: "+ cliente.getDni()+ "\n");
         } catch (NotExistsException ex) {
-            teclado.out(ex.toString());
+            teclado.out(ex.getMessage());
         }
+             
         
     }
     
 }
-
-

@@ -1,5 +1,6 @@
 package itv;
 
+import excepciones.AlreadyExistsException;
 import excepciones.FullQueueException;
 import excepciones.NotExistsException;
 import itv.FaseRevision;
@@ -23,9 +24,9 @@ public class Box {
         fases = new GenericQueue<>(NUM_FASES);
         for (int i = 0; i < NUM_FASES; i++) {
             try {
-                fases.insertarElemento(new FaseRevision(i));
+                fases.enqueue(new FaseRevision(i));
             } catch (FullQueueException ex) {
-                teclado.out("No se han podido añadir todos los elementos a la cola");
+                teclado.out("NO SE HAN PODIDO AÑADIR TODOS LOS ELEMENTOS A LA COLA\n");
             }
         }
     }
@@ -36,7 +37,7 @@ public class Box {
      * @return true si el box está libre, false en caso contrario.
      */
     public boolean estaLibre() {
-        return !fases.getPrimero().tieneVehiculo();
+        return !fases.peek().tieneVehiculo();
     }
 
     /**
@@ -44,12 +45,12 @@ public class Box {
      * 
      * @param vehiculo el vehículo a asignar.
      */
-    public void asignarVehiculo(Vehiculo vehiculo){
+    public void asignarVehiculo(Vehiculo vehiculo) throws AlreadyExistsException{
         if (estaLibre()) {
-            fases.getPrimero().asignarVehiculoFase(vehiculo);
-            teclado.out("Vehículo con matrícula " + vehiculo.getMatricula() + " asignado al box.");
+            fases.peek().asignarVehiculoFase(vehiculo);
+            teclado.out("Vehículo con matrícula " + vehiculo.getMatricula() + " asignado al box.\n");
         } else {
-            teclado.out("El box está ocupado.");
+            throw new AlreadyExistsException("EL BOX ESTÁ OCUPADO.\n");
         }
     }
     
@@ -59,7 +60,7 @@ public class Box {
      * @return el vehículo en la última fase del box.
      */
     public Vehiculo copiarUltimoVehiculo()throws NotExistsException{
-        if(!fases.getUltimo().tieneVehiculo())throw new NotExistsException("No hay vehículos en la última fase");
+        if(!fases.getUltimo().tieneVehiculo())throw new NotExistsException("NO HAY VEHICULOS EN LA ÚLTIMA FASE\n");
         return fases.getUltimo().getVehiculo();
     }
 
@@ -86,32 +87,9 @@ public class Box {
                 fases.getCola().get(i).asignarVehiculoFase(fases.getCola().get(i-1).getVehiculo());
                 fases.getCola().get(i-1).eliminarVehiculo();                
             }
-            teclado.out("LA PRIMERA FASE AHORA ESTÁ LIBRE PARA RECIBIR NUEVOS VEHÍCULOS");
+            teclado.out("LA PRIMERA FASE AHORA ESTÁ LIBRE PARA RECIBIR NUEVOS VEHÍCULOS\n");
         }
-//        for (FaseRevision fase : fases) {
-//            if (!fase.estaLibre()) {
-//                hayVehiculos = true;
-//                break;
-//            }
-//        }
-//        if (fases.estaVacia()) {
-//            teclado.out("No hay vehículos en este box para avanzar.\n");
-//            return;
-//        }
-//        if (!fases[fases.length - 1].estaLibre()) {
-//            Vehiculo ultimoVehiculoFase = fases[fases.length - 1].getVehiculo();
-//            teclado.out("El vehículo con matrícula " + ultimoVehiculoFase.getMatricula() + " ha superado las fases de revisión y ha abandonado el taller.\n");           
-//            fases[fases.length - 1].eliminarVehiculo();
-//        }
-//        for (int i = fases.length - 1; i > 0; i--) {
-//            if (!fases[i - 1].estaLibre()) {
-//                fases[i].setVehiculo(fases[i - 1].getVehiculo());
-//                fases[i - 1].eliminarVehiculo();
-//            }
-//        }
-//        if (fases[0].estaLibre()) {
-//            teclado.out("La primera fase ahora está libre para recibir nuevos vehículos.\n");
-//        }
+
     }
 
     /**
@@ -119,8 +97,8 @@ public class Box {
      */
     public void mostrarEstado() {
         for (int i = 0; i < NUM_FASES; i++) {
-            String estado = fases.getCola().get(i).estaLibre() ? "vacía" : "ocupada por " + fases.getCola().get(i).getMatriculaVehiculo();
-            teclado.out("\nFase " + (i+1) + " está " + estado + ".");
+            String estado = fases.getCola().get(i).estaLibre() ? "vacía\n" : "ocupada por " + fases.getCola().get(i).getMatriculaVehiculo()+"\n";
+            teclado.out("\nFase " + (i+1) + " está " + estado + ".\n");
         }
     }
 

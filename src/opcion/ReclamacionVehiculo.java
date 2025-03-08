@@ -4,6 +4,7 @@
  */
 package opcion;
 
+import excepciones.AlreadyExistsException;
 import excepciones.NotExistsException;
 import itv.Taller;
 import java.util.logging.Level;
@@ -29,11 +30,12 @@ public class ReclamacionVehiculo extends OpcionTaller {
      */
     @Override
     public void ejecutar(){
+        teclado.out("-- RECLAMAR VEHÍCULO --\n");
         if(this.taller.colaEstaVacia()){
-           teclado.out("No hay vehiculos en la cola principal\n");
+           teclado.out("NO HAY VEHÍCULOS EN LA COLA PRINCIPAL\n");
            
         }else if(!taller.boxesVacios()){
-           teclado.out("Los boxes están llenos\n");
+           teclado.out("LOS BOXES ESTÁN LLENOS\n");
         }else{
             teclado.out("Indica el box donde quieres introducir el vehiculo: ");
             int opcion = teclado.inInt();            
@@ -43,8 +45,11 @@ public class ReclamacionVehiculo extends OpcionTaller {
            }
             try {
                 taller.asignarVehiculoBox(opcion, taller.extraerVehiculoCola());
+                taller.eliminarVehiculoCola();
             } catch (NotExistsException ex) {
-                teclado.out("No ha sido posible realizar la operación ya que todavía no hay vehículos existentes.");
+                teclado.out("NO HAY VEHÍCULOS\n");
+            } catch (AlreadyExistsException ex) {
+                teclado.out(ex.getMessage());
             }
             
         }

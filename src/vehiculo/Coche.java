@@ -58,6 +58,10 @@ public class Coche extends TransportePersonas {
         return this.calcularPrecio();
     }
 
+    /**
+     * 
+     * @return devuelve el descuento 
+     */
     @Override
     public double getDescuento() {
         return super.getDescuento();

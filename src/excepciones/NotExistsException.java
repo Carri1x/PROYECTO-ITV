@@ -6,7 +6,7 @@ package excepciones;
  */
 public class NotExistsException extends Exception{
      public NotExistsException() {
-        super("Error: El elemento solicitado no existe.");
+        super("Error: El elemento solicitado no existe.\n");
     }
     
     public NotExistsException(String mensaje){

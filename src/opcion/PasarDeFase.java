@@ -26,6 +26,7 @@ public class PasarDeFase extends OpcionTaller {
     @Override
     public void ejecutar() {
         
+        teclado.out("-- PASAR VEHÍCULOS DE FASE --\n");
         teclado.out("Ingrese el número de box donde desea pasar los vehículos de fase: ");
         int numeroBox = teclado.inInt();
         while (!limiteBoxes.inclou(numeroBox)) {

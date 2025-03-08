@@ -25,9 +25,19 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
         this.modeloVehiculo = modeloVehiculo;
         this.cliente = cliente;
     }
+     
+     /**
+      * 
+      * @return devuelve si el cliente es VIP o no
+      */
     public boolean clienteIsVIP(){
        return cliente.isVIP();
     }
+    
+    /**
+     * 
+     * @return devuelve si el cliente es socio o no 
+     */
     public boolean clienteIsSOCIO(){
         return cliente.isSOCIO();
     }
@@ -125,13 +135,13 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
      * Muestra toda la información del vehículo.
      */
     public void mostrarTodo(){
-        teclado.out("-------Datos del vehículo----------");
-        teclado.out("Matrícula: "+this.matricula);
-        teclado.out("Tipo de vehículo: "+this.getTipo());
-        teclado.out("Centímetros cúbicos: "+this.CC);
-        teclado.out("Cantidad cilindros: "+this.cilindros);
-        teclado.out("Modelo: "+this.modeloVehiculo);
-        teclado.out("El vehículo ha pasado la revisión: "+this.estadoVehiculo);
+        teclado.out("-------Datos del vehículo----------\n");
+        teclado.out("Matrícula: "+this.matricula+"\n");
+        teclado.out("Tipo de vehículo: "+this.getTipo()+"\n");
+        teclado.out("Centímetros cúbicos: "+this.CC+"\n");
+        teclado.out("Cantidad cilindros: "+this.cilindros+"\n");
+        teclado.out("Modelo: "+this.modeloVehiculo+"\n");
+        teclado.out("El vehículo ha pasado la revisión: "+this.estadoVehiculo+"\n");
     }
 
     /**
@@ -167,14 +177,36 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
      */
     public abstract void registrarVehiculo();
     
-    
+    /**
+     * 
+     * @return devuelve el descuento 
+     */
     public abstract double getDescuento();
 
+    /**
+     * 
+     * @param o
+     * @return compara los vehículos por matricula como en la vida real, primero según las letras y si son iguales por los números
+     */
     @Override
     public int compareTo(Vehiculo o) {
-        return this.matricula.compareTo(o.matricula);
+        String mat1 = this.getMatricula().substring(3);
+        String mat2 = o.getMatricula().substring(3);
+        String num1 = this.getMatricula().substring(0, 4);
+        String num2 = o.getMatricula().substring(0, 4);
+        
+        if(mat1.equalsIgnoreCase(mat2)){
+            return num1.compareTo(num2);
+        }
+        return mat1.compareTo(mat2);
+       
     }
 
+    /**
+     * 
+     * @param obj
+     * @return compara los vehículos por matricula 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -188,6 +220,15 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
         }
         final Vehiculo other = (Vehiculo) obj;
         return Objects.equals(this.matricula, other.matricula);
+    }
+
+    /**
+     * 
+     * @return devuelve la matrícula del vehículo
+     */
+    @Override
+    public String toString() {
+        return " matricula:" + matricula;
     }
 
     

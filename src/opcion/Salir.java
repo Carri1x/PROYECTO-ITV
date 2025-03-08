@@ -17,6 +17,9 @@ public class Salir extends Opcion{
         this.menu = menu;
     }
 
+    /**
+     * pone fin al programa
+     */
     @Override
     public void ejecutar() {
         teclado.out("\n--FIN DEL PROGRAMA--");

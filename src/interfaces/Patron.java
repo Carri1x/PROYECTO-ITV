@@ -19,24 +19,43 @@ public enum Patron {
         this.definicion=definicion;
     }
 
+    /**
+     * 
+     * @return te devuelve el tipo de patron 
+     */
     public Pattern tipo() {
         return patron;
     }
+    
+    /**
+     * 
+     * @return te devuelve que reglas debe seguir el patron (de forma entendible) 
+     */
     public String definicion(){
         return definicion;
     }
     
+    /**
+     * 
+     * @param patron
+     * @return devuelve el patrón solicitado si lo encuentra en las opciones 
+     */
     public static Pattern getPattern(String patron){
         for (Patron value : values()) {
             if(value.name().equalsIgnoreCase(patron)){
                 return value.patron;
             }
         }
-        throw new IllegalArgumentException("No se encontró el patrón para: " + patron);
+        throw new IllegalArgumentException("NO SE ENCONTRÓ EL PATRÓN PARA: " + patron + "\n");
     }
 
     //RECOGO LA EXPRESIÓN REGULAR Y DEVUELVO EL CONTENDIO DEL ENUM 
     //PARA QUE SE PUEDA SER ESCALABLE FÁCILMENTE SIN TENER QUE DUPLICAR Y SABERSE LAS EXPRESIONES REGULARES
+    /**
+     * 
+     * @param patron
+     * @return devuelve la definicion del patrón  
+     */
     public static String getCaracteristica(String patron) {
         for (Patron value : values()) {
             if (value.name().equalsIgnoreCase(patron)) {
@@ -46,8 +65,13 @@ public enum Patron {
         return null;
     }
 
+    /**
+     * 
+     * @param definicionPatron
+     * @return devuelve el mensaje de error 
+     */
     private static String caracteristica(String definicionPatron) {
-        return "Error, debe seguir un patron igual a este: ("+definicionPatron+")\n";
+        return "ERROR. DEBE SEGUIR UN PATRÓN IGUAL A ÉSTE: ("+definicionPatron+")\n";
     }
     
     

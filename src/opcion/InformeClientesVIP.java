@@ -18,6 +18,9 @@ public class InformeClientesVIP extends OpcionTaller{
         super("Generar informe de clientes VIP", taller);
     }
 
+    /**
+     * muestra la lista de los clientes vip
+     */
     @Override
     public void ejecutar() {
         TreeSet<Cliente> clientesVip;
@@ -26,7 +29,7 @@ public class InformeClientesVIP extends OpcionTaller{
             clientesVip = taller.getClientesVip();
             teclado.out("\n------ CLIENTES VIP ------\n");
             for (Cliente cliente : clientesVip) {
-                teclado.out("Cliente "+(i++)+""
+                teclado.out("Cliente "+(++i)+""
                             + "\nDNI: "+cliente.getDni()
                             +"\nNombre: "+cliente.getNombre()
                             +"\nTelefono: "+cliente.getTelefono()+"\n\n");

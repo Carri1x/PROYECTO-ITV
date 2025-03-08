@@ -22,6 +22,7 @@ public class MostrarBoxes extends OpcionTaller {
      */
     @Override
     public void ejecutar(){
+        teclado.out("-- MOSTRAR ESTADO DE TODOS LOS BOXES --\n");
         taller.mostrarBoxes();
     }
    

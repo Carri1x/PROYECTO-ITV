@@ -77,7 +77,7 @@ public class FaseRevision {
      * @return la matrícula del vehículo o "Sin vehículo" si no hay vehículo asignado.
      */
     public String getMatriculaVehiculo() {
-        return (vehiculo != null) ? vehiculo.getMatricula() : "Sin vehículo";
+        return (vehiculo != null) ? vehiculo.getMatricula() : "SIN VEHICULO\n";
     }
 
     /**

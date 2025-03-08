@@ -24,14 +24,22 @@ public class Menu implements Validable{
     private ArrayList<Opcion> opciones;
     private int numOpciones = 0;
     private boolean salir = false;
+    
     public Menu(){
         opciones = new ArrayList<>();
     }
     
+    /**
+     * añade una opcion al menú
+     * @param opcion 
+     */
     public void añadirOpcion(Opcion opcion){
         opciones.add(opcion);
     }
     
+    /**
+     * muestra las opciones del menú
+     */
     public void mostrar(){
         teclado.out("\n----MENÚ OPCIONES----\n");       
         for (int i = 0; i < opciones.size(); i++) {
@@ -39,10 +47,18 @@ public class Menu implements Validable{
         }
     }
     
+    /**
+     * 
+     * @return devuelve la opción elegida 
+     */
     public Opcion getOpcion(){
         return opciones.get(validarOpcion() - 1);
     }
     
+    /**
+     * 
+     * @return valida que la opción es correcta (lo cambiaremos implementando Validable) 
+     */
     private int validarOpcion(){
         Interval opcion = new Interval(1,opciones.size());
         teclado.out("Dame la opción que quieres: ");      
@@ -51,22 +67,21 @@ public class Menu implements Validable{
         return usuario;
     }
     
+    /**
+     * 
+     * @return devuelve el estado de salir 
+     */
     public boolean getSalir(){
         return salir;
     }
     
+    /**
+     * cambia el estado de salir a true para terminar el programa
+     */
     public void salir(){
         this.salir = true;
     }
             
             
-//    teclado.out("\nMenú del Taller:\n");
-//        teclado.out("1. Registrar nuevo vehículo\n");
-//        teclado.out("2. Reclamar vehículo\n");
-//        teclado.out("3. Pasar vehículo de fase\n");
-//        teclado.out("4. Mostrar estado de un box\n");
-//        teclado.out("5. Mostrar estado de todos los boxes\n");
-//        teclado.out("6. Calcular y pagar vehiculo revisado\n");
-//        teclado.out("7. Calcular ingresos totales\n");
-//        teclado.out("8. Salir\n")
+
 }

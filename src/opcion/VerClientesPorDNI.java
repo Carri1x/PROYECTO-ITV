@@ -4,40 +4,41 @@
  */
 package opcion;
 
+import cliente.Cliente;
 import excepciones.NotExistsException;
 import itv.Taller;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.GestorIO;
-import vehiculo.Vehiculo;
 
 /**
  *
  * @author irene
  */
-public class VehiculoMatriculaNueva extends OpcionTaller {
-    
-    public VehiculoMatriculaNueva(Taller taller) {
-        super("Mostrar vehiculo con la matrícula más nueva", taller);
+public class VerClientesPorDNI extends OpcionTaller{
+
+    public VerClientesPorDNI(Taller taller) {
+        super("Ver clientes ordenados por DNI", taller);
     }
-    
+
     /**
-     * muestra el vehículo con la matricula más nueva
+     * muestra los clientes en orden por DNI
      */
     @Override
     public void ejecutar() {
         GestorIO teclado = new GestorIO();
-        teclado.out("-- VEHÍCULO CON LA MATRÍCULA MÁS NUEVA --\n");
-        Vehiculo vehiculo;
+        teclado.out("-- VER CLIENTES ORDENADOS POR DNI --\n");
         try {
-            vehiculo = Taller.encontrarMaximo(taller.getVehiculos());
-            teclado.out(vehiculo.getMatricula()+"\n");
+            TreeSet<Cliente> clientes = new TreeSet<>(taller.listaClientes());
+            for (Cliente cliente : clientes) {
+                teclado.out(cliente.toString());
+            }
         } catch (NotExistsException ex) {
-            teclado.out(ex.toString());
+            teclado.out(ex.getMessage());
         }
+            
         
     }
     
 }
-
-

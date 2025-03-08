@@ -19,6 +19,7 @@ public class MostrarBox extends OpcionTaller {
      */
     @Override
     public void ejecutar(){
+        teclado.out("-- MOSTRAR DATOS DE UN BOX --\n");
         teclado.out("Introduce el box que quieres consultar (1-6): ");
         int opcion = validarOpcion(teclado.inInt(), 1, 6);
         taller.mostrarBox(opcion);
