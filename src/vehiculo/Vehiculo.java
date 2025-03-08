@@ -3,7 +3,6 @@ package vehiculo;
 import cliente.Cliente;
 import java.util.Objects;
 import util.GestorIO;
-import util.Interval;
 
 /**
  * @author irene, alvaro, alejandro

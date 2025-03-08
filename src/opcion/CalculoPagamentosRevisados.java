@@ -1,14 +1,8 @@
 package opcion;
 
-import excepciones.FullQueueException;
 import excepciones.NotExistsException;
 import factura.Factura;
-import itv.GenericQueue;
 import itv.Taller;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import util.GestorIO;
 import vehiculo.Vehiculo;
 
 /**

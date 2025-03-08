@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package opcion;
 
 import excepciones.NotExistsException;
 import interfaces.ComparatorModelo;
 import itv.Taller;
 import java.util.TreeSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import util.GestorIO;
 import vehiculo.Vehiculo;
 
 /**
@@ -28,7 +22,6 @@ public class MostrarVehiculosPorModelo extends OpcionTaller{
      */
     @Override
     public void ejecutar() {
-        GestorIO teclado = new GestorIO();
         TreeSet<Vehiculo> vehiculos = new TreeSet<>(new ComparatorModelo());
         teclado.out("-- MOSTRAR VEHÍCULOS ORDENADOS POR MODELO --\n");
         try {

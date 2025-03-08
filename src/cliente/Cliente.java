@@ -1,9 +1,6 @@
 package cliente;
 
 import java.util.Objects;
-import java.util.UUID;
-import vehiculo.Coche;
-import vehiculo.Vehiculo;
 
 /**
  *

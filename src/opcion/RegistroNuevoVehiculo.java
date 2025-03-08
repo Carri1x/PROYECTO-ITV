@@ -3,21 +3,12 @@ package opcion;
 
 
 import cliente.Cliente;
-import excepciones.AlreadyExistsException;
-import excepciones.FullQueueException;
-import excepciones.NotExistsException;
+import excepciones.*;
 import interfaces.Validable;
 import itv.Taller;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import util.Interval;
-import vehiculo.Camion;
-import vehiculo.Coche;
-import vehiculo.Furgoneta;
-import vehiculo.MicroBus;
-import vehiculo.Vehiculo;
+import vehiculo.*;
 
 /**
  *

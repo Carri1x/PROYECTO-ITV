@@ -5,10 +5,7 @@ import excepciones.AlreadyExistsException;
 import excepciones.NotExistsException;
 import interfaces.Validable;
 import itv.Taller;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *

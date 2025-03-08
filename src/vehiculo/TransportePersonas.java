@@ -1,7 +1,6 @@
 package vehiculo;
 
 import cliente.Cliente;
-import util.GestorIO;
 import util.Interval;
 
 /**

@@ -4,8 +4,6 @@ package opcion;
 import excepciones.NotExistsException;
 import interfaces.Validable;
 import itv.Taller;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

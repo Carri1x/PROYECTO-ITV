@@ -4,10 +4,7 @@ import excepciones.FullQueueException;
 import java.util.ArrayList;
 import vehiculo.Vehiculo;
 import util.GestorIO;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * 

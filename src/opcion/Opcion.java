@@ -1,8 +1,6 @@
 package opcion;
 
-import itv.Taller;
 import util.GestorIO;
-import util.Interval;
 
 /**
  * @author irene, alvaro, alejandro

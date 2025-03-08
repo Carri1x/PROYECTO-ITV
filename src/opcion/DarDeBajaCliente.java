@@ -3,7 +3,6 @@ import cliente.Cliente;
 import excepciones.NotExistsException;
 import interfaces.Validable;
 import itv.Taller;
-import opcion.OpcionTaller;
 import util.GestorIO;
 
 /**

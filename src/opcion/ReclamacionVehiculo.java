@@ -7,13 +7,6 @@ package opcion;
 import excepciones.AlreadyExistsException;
 import excepciones.NotExistsException;
 import itv.Taller;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import vehiculo.Furgoneta;
-import vehiculo.Vehiculo;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import util.GestorIO;
 
 /**
  *

@@ -1,6 +1,5 @@
 package itv;
 
-import excepciones.NotExistsException;
 import util.GestorIO;
 import util.Interval;
 import vehiculo.Vehiculo;

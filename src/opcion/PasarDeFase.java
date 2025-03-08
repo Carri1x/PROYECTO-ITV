@@ -3,9 +3,6 @@ package opcion;
 import excepciones.FullQueueException;
 import excepciones.NotExistsException;
 import itv.Taller;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import util.GestorIO;
 import util.Interval;
 
 /**

@@ -5,9 +5,6 @@ import cliente.Cliente;
 import excepciones.NotExistsException;
 import itv.Taller;
 import java.util.TreeSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author IRENE, ÁLVARO, ALEJANDRO
